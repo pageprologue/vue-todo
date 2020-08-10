@@ -11,7 +11,8 @@
         <my-global-component></my-global-component>
         <my-local-component></my-local-component>
 
-        <child-component v-bind:propsdata="message" v-on:show-log="printText"></child-component>
+        <!-- <child-component v-bind:propsdata="message" v-on:show-log="printText"></child-component> -->
+        <child-component></child-component>
     </div>
 </body>
 <script>
@@ -40,12 +41,15 @@
         template: '<button v-on:click="showLog">show</button>',
         methods: {
             showLog: function() {
-                this.$emit('show-log');
+                // this.$emit('show-log');
+                eventBus.$emit('triggerEventBus', 100);
             }
         }
     });
 
-    new Vue({
+    var eventBus = new Vue();
+
+    var app = new Vue({
         el: '#app',
         components: {
             'my-local-component': localComponent
@@ -57,6 +61,11 @@
             printText: function() {
                 console.log("received an event");
             }
+        },
+        created: function() {
+            eventBus.$on('triggerEventBus', function(value) {
+                console.log("이벤트를 전달받음. 전달받은 값 : ", value);
+            });
         }
     });
 </script>
