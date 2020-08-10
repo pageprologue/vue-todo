@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Component Registration</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+<body>
+    <div id="app">
+        <my-global-component></my-global-component>
+        <my-local-component></my-local-component>
+    </div>
+</body>
+<script>
+    Vue.component('my-global-component', {
+        template: '<div>전역 컴포넌트: {{ globalData }} </div>',
+        data: function() {
+            return {
+                // 컴포넌트의 값에 직접 접근할 수 없음(유효범위)
+                globalData: localComponent.data.localComponent
+            }
+        }
+    });
+
+    var localComponent = {
+        template: '<div>지역 컴포넌트: {{ localData }} </div>',
+        data: function() {
+            return {
+                localData: 100
+            }
+        }
+    };
+
+    new Vue({
+        el: '#app',
+        components: {
+            'my-local-component': localComponent
+        }
+    });
+</script>
+</html>
