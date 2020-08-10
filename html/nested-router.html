@@ -9,6 +9,11 @@
 <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
 <body>
     <div id="app">
+        <p>
+            <router-link to="/user">user 컴포넌트</router-link>
+            <router-link to="/user/posts">posts 컴포넌트</router-link>
+            <router-link to="/user/profile">profile 컴포넌트</router-link>
+        </p>
         <router-view></router-view>
     </div>
 </body>
