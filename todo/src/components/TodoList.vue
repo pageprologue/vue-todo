@@ -1,14 +1,14 @@
 <template>
   <section>
-      <ul>
-          <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem" class="shadow">
+      <transition-group name="list" tag="ul">
+          <li v-for="(todoItem, index) in propsdata" :key="todoItem" class="shadow">
               <i class="checkBtn fas fa-check" aria-hidden="trud"></i>
                 {{ todoItem }} 
                 <span class="removeBtn" type="button" @click="removeTodo(todoItem, index)">
                     <i class="far fa-trash-alt" aria-hidden="true"></i>
                 </span>
           </li>
-      </ul>
+      </transition-group>
   </section>
 </template>
 
