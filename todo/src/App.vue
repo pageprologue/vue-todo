@@ -1,45 +1,28 @@
 <template>
   <div id="app">
-    <h2> {{ msg }} </h2>
-    <div class="wrap">
-      <div class="left-container">
-        <p>contents</p>
-      </div>
-      <div class="right-container">
-        <img src="../../image/lifecycle.png">
-      </div>
-    </div>
+    <TodoHeader></TodoHeader>
+    <TodoInput></TodoInput>
+    <TodoList></TodoList>
+    <TodoFooter></TodoFooter>
   </div>
 </template>
 
 <script>
+import TodoHeaderVue from './components/TodoHeader.vue'
+import TodoInputVue from './components/TodoInput.vue'
+import TodoListVue from './components/TodoList.vue'
+import TodoFooterVue from './components/TodoFooter.vue'
+
 export default {
-  name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  components: {
+    'TodoHeader': TodoHeaderVue,
+    'TodoInput': TodoInputVue,
+    'TodoList': TodoListVue,
+    'TodoFooter': TodoFooterVue
   }
 }
 </script>
 
 <style>
-.wrap {
-  width: 100%;
-  display: flex;
-}
-h2 {
-  text-align: center;
-}
-.left-container {
-  width: 50%;
-  text-align: center;
-}
-.right-container {
-  width: 50%;
-  text-align: center;
-}
-img {
-  width: 30%;
-}
+
 </style>
